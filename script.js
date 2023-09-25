@@ -8,7 +8,7 @@ function getComputerChoice() {
             return "PAPER";
             break;
         case 2:
-            return "scissor";
+            return "SCISSOR";
             break;
     }
 }
@@ -20,7 +20,7 @@ function playRound(playerSelection,computerSelection) {
         return "TIE"
     else if (playerSelection == "ROCK") {
         if (computerSelection == "PAPER") {
-            return "YOU LOSE.PAPER beats ROCK";
+            return "YOU LOSE";
         }
         else {
             return "YOU WIN";
@@ -28,7 +28,7 @@ function playRound(playerSelection,computerSelection) {
     }
     else if (playerSelection == "PAPER") {
         if (computerSelection == "SCISSOR") {
-            return "YOU LOSE scissor beats PAPER";
+            return "YOU LOSE";
         }
         else {
             return "YOU WIN";
@@ -36,7 +36,7 @@ function playRound(playerSelection,computerSelection) {
     }
     else if (playerSelection == "SCISSOR") {
         if (computerSelection == "ROCK") {
-            return "YOU LOSE. ROCK beats SCISSOR";
+            return "YOU LOSE";
         }
         else {
             return "YOU WIN";
@@ -45,27 +45,73 @@ function playRound(playerSelection,computerSelection) {
 
 }
 
-let playerScore=0,computerScore=0;
+let playerScore=0,computerScore=0,roundNumber=0;
 const btns = document.querySelectorAll('button');
 btns.forEach(button => {
-    let playerSelection =  "ROCK";
     button.addEventListener('click',()=>{
+        //get player and computer choices
         let computerSelection = getComputerChoice();
         let playerSelection = button.getAttribute('id');
        
+        //update background image for computer button
+        let computerbtn = document.querySelector("#computerbtn");
+        if(computerSelection=="ROCK"){
+            computerbtn.setAttribute('style','background-image:url("images/rock.png")')
+        }
+        else if(computerSelection=="PAPER"){
+            computerbtn.setAttribute('style','background-image:url("images/paper.png")')
+        }
+        if(computerSelection=="SCISSOR"){
+            computerbtn.setAttribute('style','background-image:url("images/scissor.png")')
+        }
+        //find result
         playerSelection = playerSelection.toUpperCase();
         let result = playRound(playerSelection,computerSelection);
+        roundNumber++;
         if(result=="YOU WIN"){
             playerScore++;
         }
-        else if(result!="TIE"){
+        else if(result=="YOU LOSE"){
             computerScore++;
         }
-        const resultDiv = document.getElementById('resultDiv');
-        const scoreDiv = document.getElementById('scoreDiv');
+
+        //update score and show result
+        let playerScoreDiv = document.querySelector("#playerScoreDiv");
+        let computerScoreDiv = document.querySelector("#computerScoreDiv");
+        let roundDiv = document.querySelector("#roundDiv");
+        let resultDiv = document.querySelector("#resultDiv");
+        
+        playerScoreDiv.textContent = playerScore;
+        computerScoreDiv.textContent = computerScore;
+        roundDiv.textContent = `ROUND-${roundNumber}`;
         resultDiv.textContent = result;
-        scoreDiv.textContent = `Player ${playerScore} Computer ${computerScore}`;
+
+        //show final result
+        let resultDisplay = document.querySelector('#resultDisplay');
+        let gameScreen = document.querySelector('#container');
+        let endScreen = document.querySelector('#endScreen');
+        if(playerScore==5){
+            resultDisplay.textContent = 'Yayy, You Won'
+            endScreen.setAttribute('style','display:block');
+            gameScreen.setAttribute('style','display:none');
+        }
+        else if(computerScore==5){
+            resultDisplay.textContent = 'Oh No, You Lost';
+            endScreen.setAttribute('style','display:block');
+            gameScreen.setAttribute('style','display:none');
+        }
     });
 });
+
+const playAgainbtn = document.querySelector('#playAgain');
+playAgainbtn.addEventListener('click',()=>{
+    let gameScreen = document.querySelector('#container');
+    let endScreen = document.querySelector('#endScreen');
+    gameScreen.setAttribute('style','display:block');
+    endScreen.setAttribute('style','display:none');
+    playerScore=0;
+    computerScore=0;
+    roundNumber=0;
+})
 
 

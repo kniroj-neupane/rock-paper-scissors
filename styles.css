@@ -1,0 +1,122 @@
+html{
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(28, 15, 37, 0.527);
+}
+#container{
+    /* display: none; */
+    min-height: 80vh;
+    width: 60vw;
+    margin: auto;
+    margin-top: 10vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 7px 7px rgba(48, 49, 49, 0.692);
+}
+#titleSection{
+    text-align: center;
+    padding: 1rem;
+    font-family: 'Roboto';
+    color:rgba(240, 134, 134, 0.918);
+}
+#gameSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#playerSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#computerSection{
+    display: flex;
+    align-items: center;
+}
+#container button{
+    height: 70px;
+    width: 70px;
+    margin: 10px;
+    border: 2px solid;
+    border-radius: 50px;
+}
+#container button:hover{
+  cursor: move;
+  border: 2px solid rgb(72, 182, 9);
+}
+#rock{
+    background-image: url("images/rock.png");
+    background-size: cover;
+    background-position: center;
+    
+}
+#paper{
+    background-image: url("images/paper.png");
+    background-size: cover;
+    background-position: center;
+    
+}
+#scissor{
+    background-image: url("images/scissor.png");
+    background-size: cover;
+    background-position: center;
+    
+}
+#computerbtn{
+    background-size: cover;
+    background-position: center;
+}
+#scoreSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(214, 7, 76);
+    text-align: center;
+
+}
+#playerScoreDiv{
+    margin-left: 5rem;
+}
+#computerScoreDiv{
+    margin-right: 5rem;
+}
+#endScreen{
+    min-height: 80vh;
+    width: 60vw;
+    margin: auto;
+    margin-top: 10vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 7px 7px rgba(48, 49, 49, 0.692);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#resultDisplay{
+    font-size: 48px;
+    font-weight: bold;
+    color:rgba(240, 134, 134, 0.918);
+}
+#playAgain{
+    border-radius: 10px;
+    height: 50px;
+    width: 130px;
+    margin-top: 1rem;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgba(28, 15, 37, 0.527);
+    color: white;
+    border: none;
+
+}
+#playAgain:hover{
+    background-color: rgba(28, 15, 37, 0.801);
+    cursor: move;
+    font-size: 20px;
+}
