@@ -5,7 +5,7 @@ body{
     background-color: rgba(28, 15, 37, 0.527);
 }
 #container{
-    /* display: none; */
+    display: none;
     min-height: 80vh;
     width: 60vw;
     margin: auto;
@@ -86,6 +86,7 @@ body{
     margin-right: 5rem;
 }
 #endScreen{
+    
     min-height: 80vh;
     width: 60vw;
     margin: auto;

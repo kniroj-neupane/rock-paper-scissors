@@ -46,7 +46,7 @@ function playRound(playerSelection,computerSelection) {
 }
 
 let playerScore=0,computerScore=0,roundNumber=0;
-const btns = document.querySelectorAll('button');
+const btns = document.querySelectorAll('.playerbtn');
 btns.forEach(button => {
     button.addEventListener('click',()=>{
         //get player and computer choices
@@ -92,12 +92,12 @@ btns.forEach(button => {
         let endScreen = document.querySelector('#endScreen');
         if(playerScore==5){
             resultDisplay.textContent = 'Yayy, You Won'
-            endScreen.setAttribute('style','display:block');
+            endScreen.setAttribute('style','display:flex');
             gameScreen.setAttribute('style','display:none');
         }
         else if(computerScore==5){
             resultDisplay.textContent = 'Oh No, You Lost';
-            endScreen.setAttribute('style','display:block');
+            endScreen.setAttribute('style','display:flex');
             gameScreen.setAttribute('style','display:none');
         }
     });
@@ -107,11 +107,20 @@ const playAgainbtn = document.querySelector('#playAgain');
 playAgainbtn.addEventListener('click',()=>{
     let gameScreen = document.querySelector('#container');
     let endScreen = document.querySelector('#endScreen');
+    let playerScoreDiv = document.querySelector("#playerScoreDiv");
+    let computerScoreDiv = document.querySelector("#computerScoreDiv");
+    let roundDiv = document.querySelector("#roundDiv");
+    let resultDiv = document.querySelector("#resultDiv");
+
     gameScreen.setAttribute('style','display:block');
     endScreen.setAttribute('style','display:none');
     playerScore=0;
     computerScore=0;
     roundNumber=0;
+    playerScoreDiv.textContent = playerScore;
+    computerScoreDiv.textContent = computerScore;
+    roundDiv.textContent = `ROUND-${roundNumber}`;
+    resultDiv.textContent = result;
 })
 
 
